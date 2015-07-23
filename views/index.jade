@@ -7,3 +7,6 @@ block content
     - each k, i in Numbers
       li
       =k.newNumber
+  form(action = '/', method = 'post')
+    input.form-control(type = 'text', name = 'inputNumber', placeholder='Enter new number')
+    button(type = 'submit') Submit

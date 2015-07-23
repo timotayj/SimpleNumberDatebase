@@ -8,31 +8,34 @@ var Numbers     = mongoose.model( 'Numbers' );
 
 
 router.get('/', function(req, res, next) {
-    Numbers.find({ Numbers : Numbers }).
-        exec( function ( err, Numbers ){
-            if( err ) return next( err );
+    Numbers.find({Numbers: Numbers}).
+        exec(function (err, Numbers) {
+            if (err) return next(err);
 
-            res.render( 'index', {
+            res.render('index', {
 
-                'Numbers' : Numbers
+                'Numbers': Numbers
             });
         });
+});
+
+
+router.post('/', function(req, res) {
+
+    new Numbers({newNumber : req.body.inputNumber})
+        .save(function (err, inputNumber) {
+        console.log(inputNumber)
+        res.redirect('/')
+
+    });
 });
 
 
 
 
 
-exports.create = function ( req, res, next ){
-    new Numbers({
-        newNumber    : req.body.content,
 
-    }).save( function ( err, numbers, count ){
-            if( err ) return next( err );
 
-            res.redirect( '/' );
-        });
-};
 
 module.exports = router;
 
