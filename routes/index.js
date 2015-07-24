@@ -1,3 +1,8 @@
+
+//i've followed many tutorials to get this working:
+// check out https://github.com/kacole2/express-node-mongo-skeleton
+
+
 var express = require('express');
 var router = express.Router();
 
@@ -6,6 +11,8 @@ var mongoose = require( 'mongoose' );
 var Numbers     = mongoose.model( 'Numbers' );
 var  methodOverride = require('method-override');
 
+
+//super important!
 router.use(bodyParser.urlencoded({extended:true}))
 
 router.use(methodOverride(function(req, res){
@@ -47,7 +54,7 @@ router.route('/')
 
     });
 
-
+//define what id is, to use lower down
 router.param('id', function(req, res, next, id) {
 
     mongoose.model('Numbers').findById(id, function (err, numbers) {
@@ -96,7 +103,6 @@ router.route('/:id')
             }
         });
     });
-
 
 
 
