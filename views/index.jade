@@ -6,13 +6,15 @@ block content
   ul
      each k, i in Numbers
       li
-      p Entry:
+      p Entry: 
         =k._id
 
       p Number:
         = k.newNumber
         p
-        a(href=('/#{k._id}/edit')) Edit
+        form(action=('/#{k._id}/edit'))
+            button(type = 'submit').
+                Edit
           form(action='/#{k._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
               input(type='hidden',value='DELETE',name='_method')
               button(type='submit').
