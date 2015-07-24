@@ -132,6 +132,40 @@ router.route('/:id/edit')
     })
 
 
+    .post(function(req, res) {
+
+        var newNumber = req.body.newNumber;
+
+
+
+        mongoose.model('Numbers').findById(req.id, function (err, Numbers) {
+
+            Numbers.update({
+                newNumber : newNumber
+
+            }, function (err, numberID) {
+                if (err) {
+                    res.send("There was a problem updating the information to the database: " + err);
+                }
+                else {
+
+                    res.format({
+                        html: function(){
+                            res.redirect("/");
+                        },
+                        //JSON responds showing the updated values
+                        json: function(){
+                            res.json(Numbers);
+                        }
+                    });
+                }
+            })
+        });
+    })
+
+
+
+
     .delete(function(req, res) {
         mongoose.model('Numbers').findById(req.id, function(err, Numbers){
             if (err) {

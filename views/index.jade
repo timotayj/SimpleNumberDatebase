@@ -12,7 +12,7 @@ block content
       p Number:
         = k.newNumber
         p
-        a(href=('/#{k._id}')) Show
+        a(href=('/#{k._id}/edit')) Edit
           form(action='/#{k._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
               input(type='hidden',value='DELETE',name='_method')
               button(type='submit').

@@ -4,5 +4,12 @@ block content
     p id: #{Numbers._id}
     p Number: #{Numbers.newNumber}
 
+    form(action='/#{Numbers._id}/edit',method='post',name='newNumber',enctype='application/x-www-form-urlencoded')
+        p New Number?
+            input#inputnewNumber(type = 'text', value = '#{Numbers.newNumber}', name = 'newNumber')
+        p
+            button#btnSubmit(type='submit').
+                Update
+
 
 
